@@ -65,8 +65,6 @@ class Ingress extends Controller
                 Storage::disk('s3')->put("$randomlyGeneratedFilename.pdf", $generatedDocument);
             }
 
-            $request->user()->addDocument();
-
             return response()->json([
                 'id' => $document->id,
                 'name' => $document->name,

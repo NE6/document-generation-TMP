@@ -1,4 +1,4 @@
-service: document-generation-servivce
+service: document-generation-tmp
 
 provider:
     name: aws
@@ -8,21 +8,18 @@ provider:
     stage: dev
     runtime: provided.al2
     environment:
-      APP_NAME: "Document Gen Testing"
-      APP_ENV: local
+      APP_NAME: "Document Generation TMP"
+      APP_ENV: production
       APP_KEY: base64:Yx84gi7O3UgxPo9bCBPeNukGfMr+m/JDS/sug5KVEso=
       APP_DEBUG: true
-      APP_URL: https://2liwkryk96.execute-api.eu-west-2.amazonaws.com
+      APP_URL: https://2z06vic1x1.execute-api.eu-west-2.amazonaws.com
       IDECAR_ENV: YOUR_NAME_local
-      DB_HOST: ${ssm:/doc-gen-service/db-host}
-      DB_PORT: ${ssm:/doc-gen-service/db-port}
-      DB_DATABASE: ${ssm:/doc-gen-service/db-name}
-      DB_USERNAME: ${ssm:/doc-gen-service/db-user}
-      DB_PASSWORD: ${ssm:/doc-gen-service/db-password}
+      SIDECAR_ENV: production
       SIDECAR_ACCESS_KEY_ID: ${ssm:/doc-gen-service/full-access-key}
       SIDECAR_SECRET_ACCESS_KEY: ${ssm:/doc-gen-service/full-access-secret}
-#      AWS_ACCESS_KEY_ID: ${ssm:/doc-gen-service/s3-access-key}
-#      AWS_SECRET_ACCESS_KEY: ${ssm:/doc-gen-service/s3-access-secret}
+      SIDECAR_REGION: eu-west-2
+      SIDECAR_ARTIFACT_BUCKET_NAME: sidecar-document-generation-tmp
+      SIDECAR_EXECUTION_ROLE: arn:aws:iam::579331227450:role/sidecar-execution-role
 
 package:
     # Directories to exclude from deployment

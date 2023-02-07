@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth.basic')->post('/document', [Ingress::class, 'consumeDocumentRequest']);
+Route::post('/document', [Ingress::class, 'consumeDocumentRequest']);
