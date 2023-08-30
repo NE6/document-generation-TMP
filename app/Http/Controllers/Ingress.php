@@ -68,7 +68,7 @@ class Ingress extends Controller
             return response()->json([
                 'id' => $document->id,
                 'name' => $document->name,
-                'filename' => $randomlyGeneratedFilename,
+                'filename' => "$randomlyGeneratedFilename.pdf",
                 'path' => $document->path,
                 'bucket' => $document->bucket,
             ]);
