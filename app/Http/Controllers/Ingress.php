@@ -56,7 +56,8 @@ class Ingress extends Controller
             );
 
             // Generate our document using Sidecar, AWS Lambda and Browsershot.
-            $generatedDocument = BrowsershotLambda::html($contents)->pdf();
+            $generatedDocument = BrowsershotLambda::html($contents)->format($document->format)->landscape($document->landscape)->pdf();
+
 
             // Take binary data, and dump it into S3, with or without a filepath,
             if ($document->path) {
@@ -66,8 +67,6 @@ class Ingress extends Controller
             }
 
             return response()->json([
-                'id' => $document->id,
-                'name' => $document->name,
                 'filename' => "$randomlyGeneratedFilename.pdf",
                 'path' => $document->path,
                 'bucket' => $document->bucket,
